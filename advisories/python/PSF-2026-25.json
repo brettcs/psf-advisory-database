@@ -1,17 +1,18 @@
 {
   "schema_version": "1.5.0",
-  "id": "PSF-0000-CVE-2026-3276",
+  "id": "PSF-2026-25",
+  "published": "2026-06-03T14:29:39.727Z",
+  "modified": "2026-06-04T17:03:12.301Z",
   "aliases": [
     "CVE-2026-3276"
   ],
-  "published": "2026-06-03T14:29:39.727Z",
-  "modified": "2026-06-04T17:03:12.301Z",
   "details": "unicodedata.normalize() can take excessive CPU time when processing\nspecially crafted Unicode input containing long runs of combining characters\nwith alternating Canonical Combining Class values.\nThis affects all normalization forms.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
+          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
@@ -28,8 +29,7 @@
             {
               "fixed": "c5512bd7c1dc28055660565275012766941d3066"
             }
-          ],
-          "repo": "https://github.com/python/cpython"
+          ]
         }
       ]
     }
