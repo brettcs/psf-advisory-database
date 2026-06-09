@@ -1,23 +1,23 @@
 {
   "schema_version": "1.5.0",
-  "id": "PSF-0000-CVE-2026-9669",
+  "id": "PSF-2026-27",
+  "published": "2026-06-08T22:01:15.420Z",
+  "modified": "2026-06-08T23:27:25.188Z",
   "aliases": [
     "CVE-2026-9669"
   ],
-  "published": "2026-06-08T22:01:15.420Z",
-  "modified": "2026-06-08T23:27:25.188Z",
   "details": "bz2.BZ2Decompressor objects could be reused after a decompression error. If an application caught the resulting OSError and retried with the same decompressor, crafted input could cause the decompressor to resume from an invalid internal state and perform out-of-bounds writes to a stack buffer. This could crash the process when processing untrusted data.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
+          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
             }
-          ],
-          "repo": "https://github.com/python/cpython"
+          ]
         }
       ]
     }
