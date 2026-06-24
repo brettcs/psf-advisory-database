@@ -1,17 +1,18 @@
 {
   "schema_version": "1.5.0",
-  "id": "PSF-0000-CVE-2026-0864",
+  "id": "PSF-2026-29",
+  "published": "2026-06-23T17:42:01.947Z",
+  "modified": "2026-06-23T18:34:49.788Z",
   "aliases": [
     "CVE-2026-0864"
   ],
-  "published": "2026-06-23T17:42:01.947Z",
-  "modified": "2026-06-23T18:34:49.788Z",
   "details": "When using the \"configparser\" module to write configuration files\ncontaining multi-line text values with carriage return characters (\\r) the\nresulting file could be injected with unexpected keys and values if the\nattacker controls the written value.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
+          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
@@ -19,8 +20,7 @@
             {
               "fixed": "5858e42c539dac8394636a6e9b30472b8994851f"
             }
-          ],
-          "repo": "https://github.com/python/cpython"
+          ]
         }
       ]
     }
