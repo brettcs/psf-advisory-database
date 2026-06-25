@@ -2,22 +2,22 @@
   "schema_version": "1.5.0",
   "id": "PSF-2026-31",
   "published": "2026-06-23T22:02:45.434Z",
-  "modified": "2026-06-23T22:02:45.434Z",
+  "modified": "2026-06-24T15:34:06.959Z",
   "aliases": [
     "CVE-2026-11972"
   ],
-  "details": "When using the \"tarfile\" module with a file opened in \"streaming mode\" (mode=\"r|\") the tarfile module did not properly handle EOF, meaning an archive could be parsed in an infinite loop.",
+  "details": "When using the \"tarfile\" module with a file opened in \"streaming mode\" (mode=\"r|\") the tarfile module did not properly handle EOF, making archive parsing take exponentially longer.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
-          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
             }
-          ]
+          ],
+          "repo": "https://github.com/python/cpython"
         }
       ]
     }
