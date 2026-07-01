@@ -2,17 +2,16 @@
   "schema_version": "1.5.0",
   "id": "PSF-2026-30",
   "published": "2026-06-23T16:04:17.321Z",
-  "modified": "2026-06-23T17:57:32.525Z",
+  "modified": "2026-06-30T15:13:33.568Z",
   "aliases": [
     "CVE-2026-11940"
   ],
-  "details": "tarfile.extractall() with the 'data' or 'tar'\n filter could be bypassed by a crafted archive where a hardlink \nreferences a symlink stored at a deeper name than the hardlink itself.  \nThe extraction fallback validated the symlink at it's archived location \nbut recreated it at the hardlink's shallower\npath, letting a relative\n target the filter judged contained escape the destination directory.  \nThis allowed a malicious tar archive to create a symlink pointing \noutside the destination, enabling out-of-destination file reads or \nwrites. This was an incomplete fix of CVE-2025-4330.",
+  "details": "tarfile.extractall() with the 'data' or 'tar'\n filter could be bypassed by a crafted archive where a hardlink \nreferences a symlink stored at a deeper name than the hardlink itself.\u00a0 \nThe extraction fallback validated the symlink at it's archived location \nbut recreated it at the hardlink's shallower\npath, letting a relative\n target the filter judged contained escape the destination directory.\u00a0 \nThis allowed a malicious tar archive to create a symlink pointing \noutside the destination, enabling out-of-destination file reads or \nwrites. This was an incomplete fix of CVE-2025-4330.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
-          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
@@ -28,8 +27,12 @@
             },
             {
               "fixed": "79c06bd5c6afa3c440d50faf7ee1b147c8832b4c"
+            },
+            {
+              "fixed": "be13e86f6b9788a6f4d0419dffef72cbae5865c9"
             }
-          ]
+          ],
+          "repo": "https://github.com/python/cpython"
         }
       ]
     }
@@ -62,6 +65,10 @@
     {
       "type": "FIX",
       "url": "https://github.com/python/cpython/commit/79c06bd5c6afa3c440d50faf7ee1b147c8832b4c"
+    },
+    {
+      "type": "FIX",
+      "url": "https://github.com/python/cpython/commit/be13e86f6b9788a6f4d0419dffef72cbae5865c9"
     }
   ],
   "database_specific": {
