@@ -1,17 +1,18 @@
 {
   "schema_version": "1.5.0",
-  "id": "PSF-0000-CVE-2026-15308",
+  "id": "PSF-2026-33",
+  "published": "2026-07-09T17:10:57.317Z",
+  "modified": "2026-07-09T19:32:36.790Z",
   "aliases": [
     "CVE-2026-15308"
   ],
-  "published": "2026-07-09T17:10:57.317Z",
-  "modified": "2026-07-09T19:32:36.790Z",
   "details": "The incremental HTML parser (html.parser.HTMLParser) allows for CPU\ndenial-of-service through repeated unterminated markup declarations when\nprocessing uncontrolled data.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
+          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
@@ -28,8 +29,7 @@
             {
               "fixed": "e9f92ac0b298292e7ff998e52cb8ccacfb27a0bd"
             }
-          ],
-          "repo": "https://github.com/python/cpython"
+          ]
         }
       ]
     }
