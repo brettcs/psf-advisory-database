@@ -6,7 +6,7 @@ on:
 
 jobs:
   update-osv-from-cve:
-    name: "Update OSV from CVE"
+    name: "Synchronize CVE and OSV"
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18,6 +18,7 @@ jobs:
         with:
           repository: python/cpython
           path: cpython
+          fetch-depth: 0
       - uses: actions/setup-python@65d7f2d534ac1bc67fcd62888c5f4f3d2cb2b236 # v4
         with:
           python-version: 3.12
