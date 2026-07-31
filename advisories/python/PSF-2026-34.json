@@ -2,25 +2,34 @@
   "schema_version": "1.5.0",
   "id": "PSF-2026-34",
   "published": "2026-07-28T13:46:30.650Z",
-  "modified": "2026-07-28T14:54:07.235Z",
+  "modified": "2026-07-30T17:31:30.941Z",
   "aliases": [
     "CVE-2026-6879"
   ],
-  "details": "`Element.findall()` and fully-consumed `Element.iterfind()` exhibit `O(n^2)` time complexity when using XPath index predicates (e.g. `[1]`, `[last()]`, `[last()-N]`) on XML documents with many same-tag siblings. `Element.find()` is only affected when the first match is near the end  of the sibling list, such as with `[last()]` or `[last()-N]`;  `.//item[1]` short-circuits after the first match.",
+  "details": "`Element.findall()` and fully-consumed `Element.iterfind()` exhibit `O(n^2)` time complexity when using XPath index predicates (e.g. `[1]`, `[last()]`, `[last()-N]`) on XML documents with many same-tag siblings. `Element.find()` is only affected when the first match is near the end\u00a0 of the sibling list, such as with `[last()]` or `[last()-N]`;\u00a0 `.//item[1]` short-circuits after the first match.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
-          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
             },
             {
               "fixed": "2ffab083782968a4d732738f4f1dff6bbd69d2b0"
+            },
+            {
+              "fixed": "02c08e6b747ac43d0d866a4ffa916bedf3423f81"
+            },
+            {
+              "fixed": "390337b8ba1658833fdef379e1739c9f9533a8db"
+            },
+            {
+              "fixed": "cb409342a19f25656f62e679f8bac265fe1442c3"
             }
-          ]
+          ],
+          "repo": "https://github.com/python/cpython"
         }
       ]
     }
@@ -41,6 +50,18 @@
     {
       "type": "FIX",
       "url": "https://github.com/python/cpython/commit/2ffab083782968a4d732738f4f1dff6bbd69d2b0"
+    },
+    {
+      "type": "FIX",
+      "url": "https://github.com/python/cpython/commit/02c08e6b747ac43d0d866a4ffa916bedf3423f81"
+    },
+    {
+      "type": "FIX",
+      "url": "https://github.com/python/cpython/commit/390337b8ba1658833fdef379e1739c9f9533a8db"
+    },
+    {
+      "type": "FIX",
+      "url": "https://github.com/python/cpython/commit/cb409342a19f25656f62e679f8bac265fe1442c3"
     }
   ],
   "database_specific": {
