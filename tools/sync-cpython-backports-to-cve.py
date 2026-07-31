@@ -31,7 +31,6 @@ CveRecord: typing.TypeAlias = dict[str, typing.Any]
 GitCommitSha: typing.TypeAlias = str
 
 
-
 def get_merged_commit_shas_for_issue(
     gh_api: Github, gh_issue_number: int
 ) -> set[GitCommitSha]:
@@ -404,7 +403,6 @@ def main():
         updated_cve = False
 
         # Find the expected GitHub issue from the CVE.
-        print(f"Checking {cve_id} record against GitHub...")
         gh_issue_numbers, cve_commit_shas = get_cve_gh_issues_and_commit_shas(
             cve_record
         )
@@ -452,34 +450,21 @@ def main():
             latest_python_version = get_next_python_version(CPYTHON_REPO)
             expected_affected_versions = [("0", str(latest_python_version))]
 
-        # We don't want to remove versions that are no longer tracked in
-        # the upstream repository. We do this by stitching the actual value
-        # and the expected value based on which Python releases are active.
-        oldest_active_python_release = get_oldest_active_python_release()
-
-        # Relies on the versions lists being sorted.
-        stitched_affected_versions = []
-        for version_range in actual_affected_versions:
-            if any(
-                v != "0" and PackagingVersion(v) < oldest_active_python_release
-                for v in version_range
-            ):
-                stitched_affected_versions.append(version_range)
-            else:
-                break
-        for version_range in expected_affected_versions:
-            if any(
-                PackagingVersion(v) >= oldest_active_python_release
-                for v in version_range
-            ):
-                stitched_affected_versions.append(version_range)
-        expected_affected_versions = stitched_affected_versions
-
-        # If the CVE has a different 'initial' version than '0' then
-        # we want to update our expected CVE affected versions to match.
-        if actual_affected_versions and actual_affected_versions[0][0] != "0":
+        # If the minimum affected version isn't "0" we want
+        # to preserve that from the CVE, not from git commit data.
+        if (
+            expected_affected_versions
+            and actual_affected_versions
+            and actual_affected_versions[0][0] != "0"
+        ):
+            min_affected_version = PackagingVersion(actual_affected_versions[0][0])
+            expected_affected_versions = [
+                vers
+                for vers in expected_affected_versions
+                if all(PackagingVersion(v) < min_affected_version for v in vers)
+            ]
             expected_affected_versions[0] = (
-                actual_affected_versions[0][0],
+                str(min_affected_version),
                 expected_affected_versions[0][1],
             )
 
@@ -488,6 +473,15 @@ def main():
             actual_affected_versions != expected_affected_versions
             and expected_affected_versions
         ):
+            # Coherence check prior to setting affected versions on CVEs.
+            assert all(
+                PackagingVersion(lt) <= PackagingVersion(gt)
+                for lt, gt in expected_affected_versions
+            )
+            assert expected_affected_versions == sorted_version_tuples(
+                expected_affected_versions
+            )
+
             print(
                 f"Updated affected versions of {cve_id} from "
                 f"{actual_affected_versions} to {expected_affected_versions}"
