@@ -464,7 +464,7 @@ def main():
                 if all(PackagingVersion(v) < min_affected_version for v in vers)
             ]
             expected_affected_versions[0] = (
-                str(min_affected_version),
+                actual_affected_versions[0][0],
                 expected_affected_versions[0][1],
             )
 
