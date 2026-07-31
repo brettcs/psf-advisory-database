@@ -39,3 +39,5 @@ jobs:
           title: "Update OSV records from CVE"
           commit-message: "Update OSV records from CVE"
           reviewers: sethmlarson,jacobcoffee
+          add-paths: |
+            advisories/
