@@ -1,17 +1,18 @@
 {
   "schema_version": "1.5.0",
-  "id": "PSF-0000-CVE-2026-18503",
+  "id": "PSF-2026-35",
+  "published": "2026-08-10T13:45:31.618Z",
+  "modified": "2026-08-10T14:23:30.257Z",
   "aliases": [
     "CVE-2026-18503"
   ],
-  "published": "2026-08-10T13:45:31.618Z",
-  "modified": "2026-08-10T14:23:30.257Z",
   "details": "Attacker-controlled CSV samples can trigger super-linear \nregular-expression work during dialect sniffing and consume significant \nCPU when applications pass unbounded input to csv.Sniffer.sniff().",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
+          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
@@ -28,8 +29,7 @@
             {
               "fixed": "b30c7fa9edd921a118f286e9f90f560777fa693b"
             }
-          ],
-          "repo": "https://github.com/python/cpython"
+          ]
         }
       ]
     }
