@@ -1,17 +1,18 @@
 {
   "schema_version": "1.5.0",
-  "id": "PSF-0000-CVE-2026-17084",
+  "id": "PSF-2026-37",
+  "published": "2026-08-18T13:57:31.876Z",
+  "modified": "2026-08-18T18:02:43.165Z",
   "aliases": [
     "CVE-2026-17084"
   ],
-  "published": "2026-08-18T13:57:31.876Z",
-  "modified": "2026-08-18T18:02:43.165Z",
   "details": "The \"stringprep\" module didn't process characters from RFC 3454 tables \nB.2 or B.3 correctly: the latest Unicode codepoint attributes were used \ninstead of the specified Unicode 3.2.0. This behavior would cause \nmismatches when processing domain names using IDNA 2003 (the \"idna\" \ncodec) and the in_table_b2() function of the \"stringprep\" module. This \nonly affects domain names containing characters that were not previously\n registered or had their Unicode attributes such as case-folding \nbehavior updated since Unicode 3.2.0.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
+          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
@@ -19,8 +20,7 @@
             {
               "fixed": "7e109d084d55e7eb25837a5f3b47ef9beee547bc"
             }
-          ],
-          "repo": "https://github.com/python/cpython"
+          ]
         }
       ]
     }
