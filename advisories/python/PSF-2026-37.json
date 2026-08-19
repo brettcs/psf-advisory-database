@@ -2,7 +2,7 @@
   "schema_version": "1.5.0",
   "id": "PSF-2026-37",
   "published": "2026-08-18T13:57:31.876Z",
-  "modified": "2026-08-18T18:02:43.165Z",
+  "modified": "2026-08-19T00:17:01.093Z",
   "aliases": [
     "CVE-2026-17084"
   ],
@@ -12,15 +12,18 @@
       "ranges": [
         {
           "type": "GIT",
-          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
             },
             {
               "fixed": "7e109d084d55e7eb25837a5f3b47ef9beee547bc"
+            },
+            {
+              "fixed": "5181304bcec9cfc3c15311741c9154cdff2e3fd7"
             }
-          ]
+          ],
+          "repo": "https://github.com/python/cpython"
         }
       ]
     }
@@ -41,6 +44,10 @@
     {
       "type": "FIX",
       "url": "https://github.com/python/cpython/commit/7e109d084d55e7eb25837a5f3b47ef9beee547bc"
+    },
+    {
+      "type": "FIX",
+      "url": "https://github.com/python/cpython/commit/5181304bcec9cfc3c15311741c9154cdff2e3fd7"
     }
   ],
   "database_specific": {
