@@ -1,17 +1,18 @@
 {
   "schema_version": "1.5.0",
-  "id": "PSF-0000-CVE-2026-15310",
+  "id": "PSF-2026-39",
+  "published": "2026-08-25T15:07:58.054Z",
+  "modified": "2026-08-26T00:20:47.848Z",
   "aliases": [
     "CVE-2026-15310"
   ],
-  "published": "2026-08-25T15:07:58.054Z",
-  "modified": "2026-08-26T00:20:47.848Z",
   "details": "When decompressing crafted zip files using the bzip/LZMA/Zstandard \n\ncompressions, Python could use an attacker-controlled size to \n\npre-allocate memory, possibly resulting in memory exhaustion.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
+          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
@@ -19,8 +20,7 @@
             {
               "fixed": "f897dbf2f36a5935700b7c2d94d4681d2136b7d4"
             }
-          ],
-          "repo": "https://github.com/python/cpython"
+          ]
         }
       ]
     }
