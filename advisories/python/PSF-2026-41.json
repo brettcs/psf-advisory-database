@@ -1,17 +1,18 @@
 {
   "schema_version": "1.5.0",
-  "id": "PSF-0000-CVE-2026-82049",
+  "id": "PSF-2026-41",
+  "published": "2026-09-14T19:14:03.873Z",
+  "modified": "2026-09-14T19:22:53.385Z",
   "aliases": [
     "CVE-2026-82049"
   ],
-  "published": "2026-09-14T19:14:03.873Z",
-  "modified": "2026-09-14T19:22:53.385Z",
-  "details": "In CPython 3.13 and earlier, the tarfile\u00a0module's data\u00a0and tar extraction filters are vulnerable to crafted archives containing a hard link to a symbolic link. Such archives may cause extraction to modify the permissions or modification time of a file outside the destination directory, or expose the contents of that file within the extracted tree.",
+  "details": "In CPython 3.13 and earlier, the tarfile module's data and tar extraction filters are vulnerable to crafted archives containing a hard link to a symbolic link. Such archives may cause extraction to modify the permissions or modification time of a file outside the destination directory, or expose the contents of that file within the extracted tree.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
+          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
@@ -19,8 +20,7 @@
             {
               "fixed": "5a57248b22ad3b9aafcaaadae2c304a1923daeca"
             }
-          ],
-          "repo": "https://github.com/python/cpython"
+          ]
         }
       ]
     }
