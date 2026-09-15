@@ -2,25 +2,31 @@
   "schema_version": "1.5.0",
   "id": "PSF-2026-41",
   "published": "2026-09-14T19:14:03.873Z",
-  "modified": "2026-09-14T19:22:53.385Z",
+  "modified": "2026-09-15T00:34:01.076Z",
   "aliases": [
     "CVE-2026-82049"
   ],
-  "details": "In CPython 3.13 and earlier, the tarfile module's data and tar extraction filters are vulnerable to crafted archives containing a hard link to a symbolic link. Such archives may cause extraction to modify the permissions or modification time of a file outside the destination directory, or expose the contents of that file within the extracted tree.",
+  "details": "In CPython 3.13 and earlier, the tarfile\u00a0module's data\u00a0and tar extraction filters are vulnerable to crafted archives containing a hard link to a symbolic link. Such archives may cause extraction to modify the permissions or modification time of a file outside the destination directory, or expose the contents of that file within the extracted tree.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
-          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
             },
             {
               "fixed": "5a57248b22ad3b9aafcaaadae2c304a1923daeca"
+            },
+            {
+              "fixed": "b38be2e6cf9d989075ab73412c63e003ebad4ff3"
+            },
+            {
+              "fixed": "b8f23e307097552eaea2604383a12ab280520d0d"
             }
-          ]
+          ],
+          "repo": "https://github.com/python/cpython"
         }
       ]
     }
@@ -41,6 +47,14 @@
     {
       "type": "ADVISORY",
       "url": "https://mail.python.org/archives/list/security-announce@python.org/thread/EFJWGAZJA56AKSBR2WHMHQZO7RRLZPRH/"
+    },
+    {
+      "type": "FIX",
+      "url": "https://github.com/python/cpython/commit/b38be2e6cf9d989075ab73412c63e003ebad4ff3"
+    },
+    {
+      "type": "FIX",
+      "url": "https://github.com/python/cpython/commit/b8f23e307097552eaea2604383a12ab280520d0d"
     }
   ],
   "database_specific": {
