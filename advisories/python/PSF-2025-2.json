@@ -1,5 +1,5 @@
 {
-  "modified": "2026-10-14T18:47:10.926Z",
+  "modified": "2026-10-16T00:41:36.473Z",
   "published": "2025-02-14T16:18:00.918Z",
   "schema_version": "1.5.0",
   "id": "PSF-2025-2",
@@ -15,6 +15,9 @@
           "events": [
             {
               "introduced": "0"
+            },
+            {
+              "fixed": "04a29bf8f9ff8526cd96cb7368400173303a390a"
             }
           ],
           "repo": "https://github.com/python/cpython"
@@ -30,6 +33,10 @@
     {
       "type": "REPORT",
       "url": "https://github.com/python/cpython/issues/159428"
+    },
+    {
+      "type": "FIX",
+      "url": "https://github.com/python/cpython/commit/04a29bf8f9ff8526cd96cb7368400173303a390a"
     }
   ],
   "database_specific": {
