@@ -1,17 +1,18 @@
 {
   "schema_version": "1.5.0",
-  "id": "PSF-0000-CVE-2026-115557",
+  "id": "PSF-2026-46",
+  "published": "2026-10-24T14:15:14.283Z",
+  "modified": "2026-10-25T00:39:26.520Z",
   "aliases": [
     "CVE-2026-115557"
   ],
-  "published": "2026-10-24T14:15:14.283Z",
-  "modified": "2026-10-25T00:39:26.520Z",
   "details": "Python has added a denylist for known compromised certificates to the \"ssl\" module to ensure user safety even without certificate revocation configured. Known compromised certificates will automatically be rejected regardless of the SSLContext policy configuration.",
   "affected": [
     {
       "ranges": [
         {
           "type": "GIT",
+          "repo": "https://github.com/python/cpython",
           "events": [
             {
               "introduced": "0"
@@ -52,8 +53,7 @@
             {
               "fixed": "e9bf2cf84eebf838a1edaa1c648c2b36345b99d3"
             }
-          ],
-          "repo": "https://github.com/python/cpython"
+          ]
         }
       ]
     }
