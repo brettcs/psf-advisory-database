@@ -1,4 +1,5 @@
 """Tool which imports data about historical CVEs for scoped projects"""
+
 import re
 
 import urllib3
