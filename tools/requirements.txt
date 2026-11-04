@@ -312,7 +312,7 @@ cryptography==50.0.2 \
     # via pyjwt
 cvelib==1.8.0 \
     --hash=sha256:9bca8d138e67ec6d6ac50c63040f0262099be2bb6db1c26a05fdd8eee30a939c
-    # via -r tools/requirements.in
+    # via -r requirements.in
 idna==3.12 \
     --hash=sha256:60ffaa1858fac94c9c124728c24fcde8160f3fb4a7f79aa8cdd33a9d1af60a67
     # via requests
@@ -322,15 +322,15 @@ jsonschema==4.26.0 \
 jsonschema-specifications==2025.9.1 \
     --hash=sha256:98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe
     # via jsonschema
-packaging==26.1 \
-    --hash=sha256:5d9c0669c6285e491e0ced2eee587eaf67b670d94a19e94e3984a481aba6802f
-    # via -r tools/requirements.in
+packaging==26.3 \
+    --hash=sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c
+    # via -r requirements.in
 pycparser==3.0 \
     --hash=sha256:b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992
     # via cffi
-pygithub==2.9.1 \
-    --hash=sha256:2ec78fca30092d51a42d76f4ddb02131b6f0c666a35dfdf364cf302cdda115b9
-    # via -r tools/requirements.in
+pygithub==2.10.0 \
+    --hash=sha256:192ada2a76e4afc7d6b37e500c9bfeba1731e6506697445a5ba1c4af8bf0b924
+    # via -r requirements.in
 pyjwt[crypto]==2.15.1 \
     --hash=sha256:42d59d631f7768a1028a64c7ff581a9bf7519804daf91fc5b6c56e30eec5e193
     # via pygithub
@@ -507,6 +507,6 @@ typing-extensions==4.15.0 \
 urllib3==2.8.0 \
     --hash=sha256:0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3
     # via
-    #   -r tools/requirements.in
+    #   -r requirements.in
     #   pygithub
     #   requests
