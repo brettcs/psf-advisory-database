@@ -313,8 +313,8 @@ cryptography==50.0.2 \
 cvelib==1.8.0 \
     --hash=sha256:9bca8d138e67ec6d6ac50c63040f0262099be2bb6db1c26a05fdd8eee30a939c
     # via -r requirements.in
-idna==3.12 \
-    --hash=sha256:60ffaa1858fac94c9c124728c24fcde8160f3fb4a7f79aa8cdd33a9d1af60a67
+idna==3.15 \
+    --hash=sha256:048adeaf8c2d788c40fee287673ccaa74c24ffd8dcf09ffa555a2fbb59f10ac8
     # via requests
 jsonschema==4.26.0 \
     --hash=sha256:d489f15263b8d200f8387e64b4c3a75f06629559fb73deb8fdfb525f2dab50ce
