@@ -9,7 +9,7 @@ from psf_advisorydb import cpython2cve
 from .fakecve import FakeCveApi
 from .fakegh import FakeGHRepo, FakeGithub
 
-CPYTHON_URL = "https://github.com/cpython/python"
+CPYTHON_URL = "https://github.com/python/cpython"
 
 
 @pytest.fixture(scope="module", autouse=True)
