@@ -13,11 +13,14 @@ CPYTHON_URL = "https://github.com/python/cpython"
 
 
 @pytest.fixture(scope="module", autouse=True)
-def cpython_repo(tmp_path_factory):
+def cpython_repo(pytestconfig, tmp_path_factory):
     if "CPYTHON_REPO" in os.environ:
         return
-    repo_path = tmp_path_factory.getbasetemp() / "cpython.git"
-    if not repo_path.exists():
+    try:
+        repo_path = pytestconfig.cache.mkdir("cpython.git")
+    except AttributeError:
+        repo_path = tmp_path_factory.mktemp("cpython.git", numbered=False)
+    if not (repo_path / "objects").exists():
         subprocess.run(
             ["git", "clone", "--bare", "--tags", "--", CPYTHON_URL, str(repo_path)],
             check=True,
