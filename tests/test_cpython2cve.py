@@ -44,15 +44,17 @@ def cve_2026_9669():
 def test_cve_unchanged(cve_2026_9669):
     cve_api, gh_api = cve_2026_9669
     expected = cve_api.show_cve_record("CVE-2026-9669")
+
     cpython2cve.main(cve_api, gh_api)
+
     assert cve_api._records["CVE-2026-9669"] == expected
 
 
 def test_cve_ranges_set(cve_2026_9669):
     cve_api, gh_api = cve_2026_9669
     expected = cve_api.show_cve_record("CVE-2026-9669")
-    for aff in cve_api._records["CVE-2026-9669"]["containers"]["cna"]["affected"]:
-        aff["versions"] = [
+    for tool in cve_api._records["CVE-2026-9669"]["containers"]["cna"]["affected"]:
+        tool["versions"] = [
             {
                 "lessThan": "3.15.0",
                 "status": "affected",
@@ -60,5 +62,7 @@ def test_cve_ranges_set(cve_2026_9669):
                 "versionType": "python",
             },
         ]
+
     cpython2cve.main(cve_api, gh_api)
+
     assert cve_api._records["CVE-2026-9669"] == expected
