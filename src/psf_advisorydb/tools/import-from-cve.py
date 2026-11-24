@@ -11,7 +11,7 @@ import cvelib.cve_api
 import osv_utils
 import urllib3
 
-ADVISORIES_DIR = Path(__file__).parent.parent / "advisories"
+ADVISORIES_DIR = Path(__file__).parent.parent.parent.parent / "advisories"
 CVE_API_TOKEN = os.environ["CVE_API_TOKEN"]
 CVE_USERNAME = os.environ["CVE_USERNAME"]
 CVE_ENV = os.environ.get("CVE_ENV", "prod")

@@ -1,6 +1,0 @@
---only-binary :all:
-
-cvelib
-urllib3
-pygithub
-packaging

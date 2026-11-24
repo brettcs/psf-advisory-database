@@ -4,7 +4,7 @@ repos:
   hooks:
   - id: check-jsonschema
     files: "^advisories/[a-z0-9_-]+/.+\\.json$"
-    args: [--schemafile, tools/osv-schema.json]
+    args: [--schemafile, src/psf_advisorydb/tools/osv-schema.json]
 - repo: https://github.com/pycqa/isort
   rev: 9.0.2
   hooks:

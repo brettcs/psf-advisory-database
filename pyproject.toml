@@ -1,0 +1,23 @@
+[project]
+name = "psf-advisorydb"
+version = "0.1.0"
+description = "Python Software Foundation Advisory Database"
+readme = "README.md"
+authors = [
+    { name = "Seth Michael Larson", email = "seth@python.org" },
+    { name = "Brett Smith", email = "brett.smith@python.org" },
+]
+requires-python = ">=3.15"
+dependencies = [
+    "cvelib>=1.8.0",
+    "packaging>=26.3",
+    "pygithub>=2.10.0",
+    "urllib3>=2.8.0",
+]
+
+[project.scripts]
+# psf-advisorydb = "psf_advisorydb:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
