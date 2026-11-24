@@ -1,3 +1,4 @@
+from collections import abc
 from dataclasses import dataclass, field
 
 
@@ -30,7 +31,7 @@ class FakeGHRepo:
     _issues: dict[int, FakeGHIssue] = field(default_factory=dict)
     _prs: dict[int, FakeGHPR] = field(default_factory=dict)
 
-    def _add_issue(self, issue_num: int, *pr_nums: int):
+    def _add_issue(self, issue_num: int, pr_nums: abc.Iterable[int] = ()):
         if not (self._issues or pr_nums):
             # For ease of use, the first issue automatically references existing PRs.
             pr_nums = self._prs.keys()
