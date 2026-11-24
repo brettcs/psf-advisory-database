@@ -24,6 +24,8 @@ from github import Auth as GitHubAuth
 from github import Github
 from packaging.version import Version as PackagingVersion
 
+from . import cveutil
+
 AffectedVersion: typing.TypeAlias = str
 CveAffectedVersionPair: typing.TypeAlias = tuple[AffectedVersion, AffectedVersion]
 CveAffectedVersionPairs: typing.TypeAlias = list[CveAffectedVersionPair]
@@ -377,28 +379,24 @@ def get_cve_gh_issues_and_commit_shas(
     return gh_issue_numbers, cve_reference_commit_shas
 
 
-def main():
+def main(
+    cve_api: CveApi | None = None,
+    gh_api: Github | None = None,
+):
     # Configuration
     CPYTHON_REPO = os.environ["CPYTHON_REPO"]
-    GH_API_TOKEN = os.environ["GH_API_TOKEN"]
-    CVE_API_TOKEN = os.environ["CVE_API_TOKEN"]
-    CVE_USERNAME = os.environ["CVE_USERNAME"]
-    CVE_ENV = os.environ.get("CVE_ENV", "prod")
     DRY_RUN = bool("DRY_RUN" in os.environ)
 
     # Services
-    GH_API = Github(auth=GitHubAuth.Token(GH_API_TOKEN))
-    CVE_API = CveApi(
-        org="PSF",
-        username=CVE_USERNAME,
-        api_key=CVE_API_TOKEN,
-        env=CVE_ENV,
-    )
+    if cve_api is None:
+        cve_api = cveutil.client_from_env()
+    if gh_api is None:
+        gh_api = Github(auth=GitHubAuth.Token(os.environ["GH_API_TOKEN"]))
 
     if DRY_RUN:
         print("Script is in dry-run mode, updates won't be persisted to CVE services.")
 
-    cves = get_published_cves_for_cpython(CVE_API)
+    cves = get_published_cves_for_cpython(cve_api)
     for cve_id, cve_record in sorted(cves.items(), reverse=True):
         updated_cve = False
 
@@ -414,7 +412,7 @@ def main():
             gh_commit_shas = set()
             for gh_issue_number in gh_issue_numbers:
                 gh_commit_shas = get_merged_commit_shas_for_issue(
-                    GH_API, gh_issue_number
+                    gh_api, gh_issue_number
                 )
 
                 # Figure out which commit SHAs aren't already referenced
@@ -499,7 +497,7 @@ def main():
 
         if updated_cve:
             if not DRY_RUN:
-                CVE_API.update_published(
+                cve_api.update_published(
                     cve_id=cve_id, cve_json=cve_record, validate=True
                 )
         else:

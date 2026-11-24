@@ -7,35 +7,28 @@ import re
 import typing
 from pathlib import Path
 
-import cvelib.cve_api
 import urllib3
 
-from . import osv_utils
-
-CVE_API_TOKEN = os.environ["CVE_API_TOKEN"]
-CVE_USERNAME = os.environ["CVE_USERNAME"]
-CVE_ENV = os.environ.get("CVE_ENV", "prod")
+from . import cveutil, osv_utils
 
 HTTP = urllib3.PoolManager()
-CVE_API = cvelib.cve_api.CveApi(
-    org="PSF",
-    username=CVE_USERNAME,
-    api_key=CVE_API_TOKEN,
-    env=CVE_ENV,
-)
 
 
-def main():
-    for cve_id, cve_record in published_cpython_cves():
+def main(cve_api: "cvelib.cve_api.CveApi | None" = None):
+    if cve_api is None:
+        cve_api = cveutil.client_from_env()
+    for cve_id, cve_record in published_cpython_cves(cve_api):
         update_osv_from_cve(cve_id, cve_record)
 
 
-def published_cpython_cves() -> typing.Iterable[tuple[str, dict[str, typing.Any]]]:
+def published_cpython_cves(
+    cve_api: "cvelib.cve_api.CveApi",
+) -> typing.Iterable[tuple[str, dict[str, typing.Any]]]:
     """Iterate over the list of published CVEs for CPython"""
 
-    for cve_ref in CVE_API.list_cves(state="PUBLISHED"):
+    for cve_ref in cve_api.list_cves(state="PUBLISHED"):
         cve_id = cve_ref["cve_id"]
-        cve_record = CVE_API.show_cve_record(cve_id)
+        cve_record = cve_api.show_cve_record(cve_id)
 
         # Skip non-CPython CVEs
         if not any(
