@@ -8,10 +8,10 @@ import typing
 from pathlib import Path
 
 import cvelib.cve_api
-import osv_utils
 import urllib3
 
-ADVISORIES_DIR = Path(__file__).parent.parent.parent.parent / "advisories"
+from . import osv_utils
+
 CVE_API_TOKEN = os.environ["CVE_API_TOKEN"]
 CVE_USERNAME = os.environ["CVE_USERNAME"]
 CVE_ENV = os.environ.get("CVE_ENV", "prod")
@@ -63,7 +63,9 @@ def update_osv_from_cve(cve_id: str, cve_record: dict[str, typing.Any]) -> None:
 
     # Otherwise we can load the existing OSV record
     else:
-        osv_json = json.loads((ADVISORIES_DIR / f"python/{osv_id}.json").read_text())
+        osv_json = json.loads(
+            (osv_utils.ADVISORIES_DIR / f"python/{osv_id}.json").read_text()
+        )
 
     # Keep track of the existing JSON, so we don't end up updating the file
     # with noisy formatting changes. Unfortunately some OSV tooling is opinionated about formatting.
@@ -150,7 +152,7 @@ def update_osv_from_cve(cve_id: str, cve_record: dict[str, typing.Any]) -> None:
 
     # Only update if there's data differences, not timestamp differences.
     if without_timestamps(existing_osv_json) != without_timestamps(osv_json):
-        with (ADVISORIES_DIR / f"python/{osv_id}.json").open("w") as f:
+        with (osv_utils.ADVISORIES_DIR / f"python/{osv_id}.json").open("w") as f:
             f.truncate()
             f.write(json.dumps(osv_json, indent=2))
 

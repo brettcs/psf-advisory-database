@@ -12,7 +12,7 @@ from pathlib import Path
 import packaging.version
 
 NOW_UTC = datetime.datetime.now(tz=datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-ADVISORIES_DIR = Path(__file__).parent.parent.parent.parent / "advisories"
+ADVISORIES_DIR = Path(__file__).parent.parent.parent / "advisories"
 
 OSV_SCHEMA_VERSION = "1.5.0"
 PRODUCT_TO_OSV_PACKAGE = {

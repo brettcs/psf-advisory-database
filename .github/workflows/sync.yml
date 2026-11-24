@@ -29,8 +29,8 @@ jobs:
         run: uv sync --locked --no-editable --no-dev
 
       - run: |
-          uv run python src/psf_advisorydb/tools/sync-cpython-backports-to-cve.py
-          uv run python src/psf_advisorydb/tools/import-from-cve.py
+          uv run python -m psf_advisorydb.cpython2cve
+          uv run python -m psf_advisorydb.cve2db
         env:
           CVE_ENV: "prod"
           CVE_USERNAME: "cna@python.org"
