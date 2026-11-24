@@ -11,8 +11,6 @@ import urllib3
 
 from . import cveutil, osv_utils
 
-HTTP = urllib3.PoolManager()
-
 
 def main(cve_api: "cvelib.cve_api.CveApi | None" = None):
     if cve_api is None:

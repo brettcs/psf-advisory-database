@@ -351,7 +351,6 @@ def get_cve_gh_issues_and_commit_shas(
     gh_issue_url_re = re.compile(
         r"^https://github\.com/python/cpython/issues?/([0-9]+)$"
     )
-    gh_pr_url_re = re.compile(r"^https://github\.com/python/cpython/pulls?/([0-9]+)$")
     gh_issue_numbers = []
 
     # Also find all currently referenced patches.
