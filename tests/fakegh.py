@@ -19,11 +19,10 @@ class FakeGHIssue:
 @dataclass
 class FakeGHPR:
     merge_commit_sha: str | None = None
-    merged: bool | None = None
 
-    def __post_init__(self):
-        if self.merged is None:
-            self.merged = self.merge_commit_sha is not None
+    @property
+    def merged(self) -> bool:
+        return bool(self.merge_commit_sha)
 
 
 @dataclass
